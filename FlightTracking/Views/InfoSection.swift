@@ -22,11 +22,11 @@ struct InfoSection: View {
           .padding(.trailing, 15)
 
         VStack(alignment: .leading) {
-          Text("No Timezone Change")
+          Text("Timezone Change")
             .font(.subheadline)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity, alignment: .leading)
-          Text("These airports are in the same timezone.")
+          Text("You will gain 1 hour, New Orleans is in the Central timezone.")
             .font(.caption)
             .foregroundStyle(.secondary)
         }

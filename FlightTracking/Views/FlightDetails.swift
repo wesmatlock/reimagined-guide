@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FlightDetails: View {
-  @EnvironmentObject var uiModel: UIModel
+  @State var uiModel: UIModel = UIModel()
   @State private var previousScrollOffset: CGFloat = 0
   @State private var closeOpacity: Double = 0
   @Binding var sheetPresented: Bool
@@ -22,16 +22,6 @@ struct FlightDetails: View {
         } header: {
           flightDetailsHeader
         }
-//        Section {
-//          ActionsRow()
-//          GateDepartureBanner()
-//          FlightStatus()
-//          SeatDetails()
-//          InfoSection()
-//          ArrivalForecast()
-//        } header: {
-//          flightDetailsHeader
-//        }
       }
 
 

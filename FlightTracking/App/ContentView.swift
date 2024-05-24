@@ -2,7 +2,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-  @StateObject var uiModel = UIModel()
+  @State var uiModel = UIModel()
   @State private var sheetPresented: Bool = true
   @State private var referenceOpacity: Double = 0
   @State private var camera: MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 33.925129700072, longitude: -98.48033042085098), distance: 8_000_000))
@@ -12,7 +12,7 @@ struct ContentView: View {
     AirportAnnotation(code: "MSY", name: "New Orleans", coordinate: .msy)
   ]
 
-  let flightRoute: [CLLocationCoordinate2D] = [.den, .msy]
+  let flightRoute: [CLLocationCoordinate2D] = [.den, .mid, .msy]
 
   var body: some View {
     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
@@ -96,7 +96,7 @@ struct ContentView: View {
         .fill(.red)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     )
-    .environmentObject(uiModel)
+//    .environmentObject(uiModel)
   }
 }
 

@@ -90,7 +90,7 @@ struct DepartureAndArrivalDetail: View {
             .frame(height: 0.5)
             .opacity(0.25)
 
-          Text("Total Flight time: 2h 38m • 890 miles")
+          Text("Total Flight time: 2h 31m • 1,079 miles")
             .font(.caption)
             .fontWeight(.regular)
             .foregroundStyle(.secondary)
