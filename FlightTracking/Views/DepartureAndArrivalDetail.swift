@@ -30,7 +30,7 @@ struct DepartureAndArrivalDetail: View {
       .background(
         Rectangle()
           .frame(width: 0.5, alignment: .center)
-          .frame(height: arrivalPosition - 10 - 10)
+          .frame(height: max(arrivalPosition - 10 - 10, 0))
           .offset(y: departurePosition)
           .foregroundStyle(.primary.opacity(0.25)),
         alignment: .top

@@ -2,7 +2,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-  @State var uiModel = UIModel()
+  @StateObject var uiModel = UIModel()
   @State private var sheetPresented: Bool = true
   @State private var referenceOpacity: Double = 0
   @State private var camera: MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 33.925129700072, longitude: -98.48033042085098), distance: 8_000_000))
@@ -82,7 +82,8 @@ struct ContentView: View {
           .interactiveDismissDisabled()
       }
 
-      Image("reference")
+//      Image("reference")
+      Image(systemName: "airplane.arrival")
         .resizable()
         .aspectRatio(contentMode: .fill)
         .ignoresSafeArea()
@@ -96,10 +97,19 @@ struct ContentView: View {
         .fill(.red)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     )
-//    .environmentObject(uiModel)
+    .environmentObject(uiModel)
   }
 }
 
 #Preview {
   ContentView()
+}
+
+// MARK: - ViewOffsetKet
+struct ViewOffsetKey: PreferenceKey {
+  typealias Value = CGFloat
+  static var defaultValue: CGFloat = .zero
+  static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+    value += nextValue()
+  }
 }

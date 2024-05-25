@@ -38,7 +38,7 @@ struct ArrivalForecast: View {
               .foregroundStyle(.secondary)
 
             HStack(spacing: 3.5) {
-              Image(systemName: "airplane,cicle")
+              Image(systemName: "airplane.circle")
                 .fontWeight(.semibold)
               Text("12")
                 .font(.system(size: 15))
