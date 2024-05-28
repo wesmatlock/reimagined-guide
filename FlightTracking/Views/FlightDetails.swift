@@ -4,9 +4,11 @@ struct FlightDetails: View {
   @EnvironmentObject var uiModel: UIModel
   @State private var previousScrollOffset: CGFloat = 0
   @State private var closeOpacity: Double = 0
+  
   @Binding var sheetPresented: Bool
-  let minimumOffset: CGFloat = 5
 
+  let flightInfo: FlightInfo
+  let minimumOffset: CGFloat = 5
 
   var body: some View {
     ScrollView(showsIndicators: false) {
@@ -16,7 +18,7 @@ struct FlightDetails: View {
           GateDepartureBanner()
           DepartureAndArrivalDetail()
           SeatDetails()
-          InfoSection()
+          InfoSection(destination: flightInfo.destination)
           ArrivalForecast()
 
         } header: {
@@ -40,7 +42,7 @@ struct FlightDetails: View {
 
   fileprivate var flightDetailsHeader: some View {
     ZStack {
-      HStack(spacing: 15) {
+      HStack(spacing: 30) {
         Image(systemName: "airplane.departure")
           .resizable()
           .aspectRatio(contentMode: .fit)
@@ -93,5 +95,9 @@ struct FlightDetails: View {
 }
 
 #Preview {
-  FlightDetails(sheetPresented: .constant(true))
+  FlightDetails(
+    sheetPresented: .constant(true),
+    flightInfo: FlightInfo(departure: .den, destination: .msy)
+  )
+    .environmentObject(UIModel())
 }

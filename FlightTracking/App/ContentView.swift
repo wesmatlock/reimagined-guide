@@ -21,7 +21,7 @@ struct ContentView: View {
           Annotation("\(location.name)", coordinate: location.coordinate, anchor: .leading) {
             HStack(spacing: 3) {
               Circle()
-                .fill(.flghtyBlue)
+                .fill(.flightyBlue)
                 .stroke(.white, lineWidth: 2)
                 .frame(height: 12)
 
@@ -32,7 +32,7 @@ struct ContentView: View {
                   .padding(.leading, 4)
                   .padding(.trailing, 3)
                   .frame(maxHeight: .infinity, alignment: .center)
-                  .background(.flghtyBlue)
+                  .background(.flightyBlue)
 
                 Text(location.name)
                   .font(.system(size: 12))
@@ -72,7 +72,10 @@ struct ContentView: View {
       .padding(.trailing, 20)
       .ignoresSafeArea()
       .sheet(isPresented: $sheetPresented) {
-        FlightDetails(sheetPresented: $sheetPresented)
+        FlightDetails(
+          sheetPresented: $sheetPresented,
+          flightInfo: FlightInfo(departure: .den, destination: .msy)
+        )
           .presentationDetents([.height(200), .medium, .fraction(0.95)], selection: $uiModel.selectedDetent)
           .presentationBackgroundInteraction(
             .enabled(upThrough: .medium)
@@ -81,16 +84,6 @@ struct ContentView: View {
           .presentationCornerRadius(21)
           .interactiveDismissDisabled()
       }
-
-//      Image("reference")
-      Image(systemName: "airplane.arrival")
-        .resizable()
-        .aspectRatio(contentMode: .fill)
-        .ignoresSafeArea()
-        .opacity(referenceOpacity)
-        .onTapGesture {
-          referenceOpacity = 0.0
-        }
     }
     .background(
       Rectangle()

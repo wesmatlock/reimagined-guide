@@ -7,7 +7,7 @@ struct SeatDetails: View {
         HStack {
           Image(systemName: "ticket.fill")
             .frame(maxWidth: .infinity, alignment: .leading)
-          Button("Paste") {
+          Button("Upgrade") {
 
           }
           .tint(.blue)
@@ -33,7 +33,7 @@ struct SeatDetails: View {
           .frame(maxHeight: .infinity)
         Text("Seat")
           .fontWeight(.bold)
-          .frame(minWidth: 130, alignment: .leading)
+          .frame(minWidth: 100, alignment: .leading)
         Text("Tap  to Edit")
           .font(.footnote)
           .foregroundStyle(.secondary)

@@ -1,6 +1,10 @@
 import SwiftUI
+import CoreLocation
 
 struct InfoSection: View {
+  let destination: CLLocationCoordinate2D
+  @State private var weatherDataService = WeatherDataService()
+
   var body: some View {
     VStack(alignment: .leading, spacing: 7)  {
       VStack(alignment: .leading) {
@@ -39,7 +43,7 @@ struct InfoSection: View {
       }
 
       HStack(spacing: 5) {
-        Image(systemName: "moon.fill")
+        Image(systemName: weatherDataService.weatherSymbol)
           .font(.title2)
           .padding(.leading, 5)
           .padding(.trailing, 15)
@@ -48,7 +52,7 @@ struct InfoSection: View {
             .font(.subheadline)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity, alignment: .leading)
-          Text("86°F - Partly Cloudy")
+          Text("Current Condition: \(weatherDataService.currentCondition)")
             .font(.caption)
             .foregroundStyle(.secondary)
         }
@@ -62,9 +66,12 @@ struct InfoSection: View {
     )
     .padding(.horizontal, 15)
     .padding(.vertical, 10)
+    .onAppear {
+      weatherDataService.fetchWeather(for: destination)
+    }
   }
 }
 
 #Preview {
-  InfoSection()
+  InfoSection(destination: .msy)
 }
