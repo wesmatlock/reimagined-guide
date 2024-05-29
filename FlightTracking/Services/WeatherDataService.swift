@@ -3,7 +3,7 @@ import SwiftUI
 import WeatherKit
 
 @Observable
-class WeatherDataService {
+final class WeatherDataService {
   private var weather: Weather?
   private let weatherService = WeatherService.shared
 

@@ -18,7 +18,7 @@ struct FlightDetails: View {
           GateDepartureBanner()
           DepartureAndArrivalDetail()
           SeatDetails()
-          InfoSection(destination: flightInfo.destination)
+          InfoSection(flightInfo: flightInfo)
           ArrivalForecast()
 
         } header: {

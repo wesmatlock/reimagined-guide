@@ -2,16 +2,18 @@ import SwiftUI
 import CoreLocation
 
 struct InfoSection: View {
-  let destination: CLLocationCoordinate2D
-  @State private var weatherDataService = WeatherDataService()
+
+  let flightInfo: FlightInfo
+
+  @State var viewModel = InfoSectionViewModel()
 
   var body: some View {
     VStack(alignment: .leading, spacing: 7)  {
       VStack(alignment: .leading) {
-        Text("Good To Know!")
+        Text(Constants.title)
           .font(.title2)
           .fontWeight(.semibold)
-        Text("Information about this flight.")
+        Text(Constants.subTitle)
           .font(.callout)
           .fontWeight(.semibold)
           .foregroundStyle(.secondary)
@@ -26,11 +28,11 @@ struct InfoSection: View {
           .padding(.trailing, 15)
 
         VStack(alignment: .leading) {
-          Text("Timezone Change")
+          Text(viewModel.timezoneChange)
             .font(.subheadline)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity, alignment: .leading)
-          Text("You will gain 1 hour, New Orleans is in the Central timezone.")
+          Text(viewModel.timezoneCityInfo)
             .font(.caption)
             .foregroundStyle(.secondary)
         }
@@ -43,7 +45,7 @@ struct InfoSection: View {
       }
 
       HStack(spacing: 5) {
-        Image(systemName: weatherDataService.weatherSymbol)
+        Image(systemName: viewModel.weatherSymbol)
           .font(.title2)
           .padding(.leading, 5)
           .padding(.trailing, 15)
@@ -52,7 +54,7 @@ struct InfoSection: View {
             .font(.subheadline)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity, alignment: .leading)
-          Text("Current Condition: \(weatherDataService.currentCondition)")
+          Text("Current Condition: \(viewModel.weatherCondition)")
             .font(.caption)
             .foregroundStyle(.secondary)
         }
@@ -67,11 +69,17 @@ struct InfoSection: View {
     .padding(.horizontal, 15)
     .padding(.vertical, 10)
     .onAppear {
-      weatherDataService.fetchWeather(for: destination)
+      viewModel.updateInfo(for: flightInfo)
     }
+  }
+
+  private enum Constants {
+    static let title = "Good To Know!"
+    static let subTitle = "Information about this flight."
+
   }
 }
 
 #Preview {
-  InfoSection(destination: .msy)
+  InfoSection(flightInfo: FlightInfo(departure: .den, destination: .msy))
 }

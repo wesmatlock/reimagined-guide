@@ -15,6 +15,8 @@
 		623467112BEEA67D00C37EAE /* AirportAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623467102BEEA67D00C37EAE /* AirportAnnotation.swift */; };
 		628992A62C04AF680085600B /* WeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628992A52C04AF680085600B /* WeatherDataService.swift */; };
 		628992AA2C04B2B20085600B /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628992A92C04B2B20085600B /* FlightInfo.swift */; };
+		628992AF2C06A5A80085600B /* TimezoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628992AE2C06A5A80085600B /* TimezoneService.swift */; };
+		628992B12C075F4B0085600B /* InfoSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628992B02C075F4B0085600B /* InfoSectionViewModel.swift */; };
 		62A6B6922BED6714008B4DFF /* FlightTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6B6912BED6714008B4DFF /* FlightTrackingApp.swift */; };
 		62A6B6942BED6714008B4DFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6B6932BED6714008B4DFF /* ContentView.swift */; };
 		62A6B6962BED6716008B4DFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A6B6952BED6716008B4DFF /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		628992A52C04AF680085600B /* WeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataService.swift; sourceTree = "<group>"; };
 		628992A92C04B2B20085600B /* FlightInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
 		628992AB2C04B7320085600B /* FlightTracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlightTracking.entitlements; sourceTree = "<group>"; };
+		628992AE2C06A5A80085600B /* TimezoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneService.swift; sourceTree = "<group>"; };
+		628992B02C075F4B0085600B /* InfoSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSectionViewModel.swift; sourceTree = "<group>"; };
 		62A6B68E2BED6714008B4DFF /* FlightTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62A6B6912BED6714008B4DFF /* FlightTrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTrackingApp.swift; sourceTree = "<group>"; };
 		62A6B6932BED6714008B4DFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,8 +110,18 @@
 			isa = PBXGroup;
 			children = (
 				628992A52C04AF680085600B /* WeatherDataService.swift */,
+				628992AE2C06A5A80085600B /* TimezoneService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		628992B22C075F6B0085600B /* InfoSection */ = {
+			isa = PBXGroup;
+			children = (
+				628992B02C075F4B0085600B /* InfoSectionViewModel.swift */,
+				62A6B6C92BEDBB72008B4DFF /* InfoSection.swift */,
+			);
+			path = InfoSection;
 			sourceTree = "<group>";
 		};
 		62A6B6852BED6714008B4DFF = {
@@ -133,14 +147,14 @@
 		62A6B6902BED6714008B4DFF /* FlightTracking */ = {
 			isa = PBXGroup;
 			children = (
-				628992AD2C0680850085600B /* Services */,
+				62A6B6BC2BED73F2008B4DFF /* App */,
+				62A6B6BD2BED73FD008B4DFF /* Assets */,
+				62A6B6BB2BED73D1008B4DFF /* Extensions */,
 				628992AB2C04B7320085600B /* FlightTracking.entitlements */,
 				62A6B6C62BED9FBA008B4DFF /* Models */,
-				62A6B6BE2BED741B008B4DFF /* Views */,
-				62A6B6BD2BED73FD008B4DFF /* Assets */,
-				62A6B6BC2BED73F2008B4DFF /* App */,
-				62A6B6BB2BED73D1008B4DFF /* Extensions */,
 				62A6B6972BED6716008B4DFF /* Preview Content */,
+				628992AD2C0680850085600B /* Services */,
+				62A6B6BE2BED741B008B4DFF /* Views */,
 			);
 			path = FlightTracking;
 			sourceTree = "<group>";
@@ -205,7 +219,7 @@
 				623467062BEE80BB00C37EAE /* ActionsRow.swift */,
 				623467082BEE83F100C37EAE /* FlightDetails.swift */,
 				6234670C2BEE878800C37EAE /* DepartureAndArrivalDetail.swift */,
-				62A6B6C92BEDBB72008B4DFF /* InfoSection.swift */,
+				628992B22C075F6B0085600B /* InfoSection */,
 				62A6B6C42BED9E45008B4DFF /* FlightStatus.swift */,
 			);
 			path = Views;
@@ -358,6 +372,7 @@
 				628992AA2C04B2B20085600B /* FlightInfo.swift in Sources */,
 				6234670B2BEE844A00C37EAE /* UIModel.swift in Sources */,
 				6234670D2BEE878800C37EAE /* DepartureAndArrivalDetail.swift in Sources */,
+				628992AF2C06A5A80085600B /* TimezoneService.swift in Sources */,
 				6234670F2BEEA5B000C37EAE /* CLLocationCoordinate2D+Util.swift in Sources */,
 				62A6B6C82BED9FD1008B4DFF /* ArrivalData.swift in Sources */,
 				623467112BEEA67D00C37EAE /* AirportAnnotation.swift in Sources */,
@@ -368,6 +383,7 @@
 				62A6B6922BED6714008B4DFF /* FlightTrackingApp.swift in Sources */,
 				623467092BEE83F100C37EAE /* FlightDetails.swift in Sources */,
 				628992A62C04AF680085600B /* WeatherDataService.swift in Sources */,
+				628992B12C075F4B0085600B /* InfoSectionViewModel.swift in Sources */,
 				62A6B6CC2BEE2ECD008B4DFF /* SeatDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
