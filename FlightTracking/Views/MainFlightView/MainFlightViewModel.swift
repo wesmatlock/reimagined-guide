@@ -4,7 +4,11 @@ import MapKit
 @Observable
 final class MainFlightViewModel {
 
-  let flights: FlightInfo = FlightInfo.getMockedFlights()
+  var flights: FlightInfo = FlightInfo.getMockedFlights()
+
+  func resetFlights() {
+    flights = FlightInfo.getMockedFlights()
+  }
 //
 //  var mapCamera: MapCamera {
 //    MapCamera(

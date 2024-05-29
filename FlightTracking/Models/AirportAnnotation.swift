@@ -27,7 +27,7 @@ extension AirportAnnotation {
     AirportAnnotation(code: "MCO", name: "Orlando International Airport", city: "Orland", coordinate: .mco),
     AirportAnnotation(code: "CLT", name: "Charlotte Douglas International Airport", city: "Charlotte", coordinate: .clt),
     AirportAnnotation(code: "SEA", name: "Seattle–Tacoma International Airport", city: "Seattle-Tecoma", coordinate: .sea),
-    AirportAnnotation(code: "PHX", name: "Phoenix Sky Harbor International Airport", city: "Phoenix", coordinate: .den),
+    AirportAnnotation(code: "PHX", name: "Phoenix Sky Harbor International Airport", city: "Phoenix", coordinate: .phx),
     AirportAnnotation(code: "EWR", name: "Newark Liberty International Airport", city: "Newark", coordinate: .ewr),
     AirportAnnotation(code: "SFO", name: "San Francisco International Airport", city: "San Francisco", coordinate: .sfo),
     AirportAnnotation(code: "IAH", name: "George Bush Intercontinental Airport", city: "Houston", coordinate: .iah),

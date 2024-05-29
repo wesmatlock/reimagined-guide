@@ -92,7 +92,7 @@ struct DepartureAndArrivalDetail: View {
             .frame(height: 0.5)
             .opacity(0.25)
 
-          Text("Total Flight time: 2h 31m • 1,079 miles")
+          Text("Total Flight time: 2h 31m • \(LocationUtilities.localizedDistanceBetween(flights.departure.coordinate, and: flights.destination.coordinate))")
             .font(.caption)
             .fontWeight(.regular)
             .foregroundStyle(.secondary)

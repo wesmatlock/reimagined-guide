@@ -29,7 +29,7 @@ struct MainFlightView: View {
                   .frame(maxHeight: .infinity, alignment: .center)
                   .background(.flightyBlue)
 
-                Text(location.name)
+                Text(location.city)
                   .font(.system(size: 12))
                   .foregroundStyle(.white)
                   .padding(.vertical, 3)
@@ -52,7 +52,12 @@ struct MainFlightView: View {
       .ignoresSafeArea()
 
       VStack(spacing: 10) {
-        Image(systemName: "map.fill")
+        Button {
+          viewModel.resetFlights()
+        } label: {
+          Image(systemName: "map.fill")
+        }
+
         Divider()
           .frame(maxWidth: 30)
         Image(systemName: "cloud.fill")

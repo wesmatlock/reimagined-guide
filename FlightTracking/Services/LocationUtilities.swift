@@ -19,13 +19,27 @@ struct LocationUtilities {
     return CLLocationCoordinate2D(latitude: midLat.radiansToDegrees, longitude: midLon.radiansToDegrees)
   }
 
-  static func distanceBetween(_ coordinate1: CLLocationCoordinate2D, and coordinate2: CLLocationCoordinate2D) -> CLLocationDistance {
+  static func localizedDistanceBetween(_ coordinate1: CLLocationCoordinate2D, and coordinate2: CLLocationCoordinate2D) -> String {
     let location1 = CLLocation(latitude: coordinate1.latitude, longitude: coordinate1.longitude)
     let location2 = CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude)
 
-    return location1.distance(from: location2)
+    let distanceInMeters = location1.distance(from: location2)
+
+    // Create a Measurement object
+    let distanceMeasurement = Measurement(value: distanceInMeters, unit: UnitLength.meters)
+
+    // Create a MeasurementFormatter
+    let formatter = MeasurementFormatter()
+    formatter.unitOptions = .naturalScale
+    formatter.unitStyle = .long
+    formatter.numberFormatter.maximumFractionDigits = 0
+
+    // Convert to user's preferred unit
+    let formattedDistance = formatter.string(from: distanceMeasurement)
+
+    return formattedDistance
   }
-  
+
 }
 extension Double {
   var degreesToRadians: Double {
