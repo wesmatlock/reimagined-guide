@@ -5,13 +5,14 @@ struct MainFlightView: View {
   @StateObject var uiModel = UIModel()
   @State private var sheetPresented: Bool = true
   @State private var referenceOpacity: Double = 0
+  @State var viewModel: MainFlightViewModel = .init()
   @State private var camera: MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 33.925129700072, longitude: -98.48033042085098), distance: 8_000_000))
+//  @State private var camera: MapCameraPosition = .camera(viewModel.mapCamera)
 
-  let flights: FlightInfo = FlightInfo.getMockedFlights()
   var body: some View {
     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
       Map(position: $camera) {
-        ForEach(flights.pointsForFlight) { location in
+        ForEach(viewModel.flights.pointsForFlight) { location in
           Annotation("\(location.name)", coordinate: location.coordinate, anchor: .leading) {
             HStack(spacing: 3) {
               Circle()
@@ -42,9 +43,9 @@ struct MainFlightView: View {
             .offset(x: -5)
           }
 
-        MapPolyline(coordinates:  flights.pointsForFlight.map { $0.coordinate })
+          MapPolyline(coordinates: viewModel.flights.pointsForFlight.map { $0.coordinate })
             .stroke(.flightyPathSecondary, lineWidth: 5)
-        MapPolyline(coordinates: flights.pointsForFlight.map { $0.coordinate })
+          MapPolyline(coordinates: viewModel.flights.pointsForFlight.map { $0.coordinate })
             .stroke(.flightyPathPrimary, lineWidth: 5)
         }
       }
@@ -68,7 +69,7 @@ struct MainFlightView: View {
       .sheet(isPresented: $sheetPresented) {
         FlightDetails(
           sheetPresented: $sheetPresented,
-          flights: flights
+          flights: viewModel.flights
         )
           .presentationDetents([.height(200), .medium, .fraction(0.95)], selection: $uiModel.selectedDetent)
           .presentationBackgroundInteraction(

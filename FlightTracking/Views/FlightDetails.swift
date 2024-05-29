@@ -57,8 +57,8 @@ struct FlightDetails: View {
               .textCase(.uppercase)
               .frame(maxWidth: .infinity, alignment: .leading)
           }
-          Text("\(flights.departure.name)\n-TO-\n\(flights.destination.name)")
-            .font(.caption)
+          Text("\(flights.departure.city) to \(flights.destination.city)")
+            .font(.title2)
             .fontWeight(.semibold)
             .fontDesign(.rounded)
             .frame(maxWidth: .infinity, alignment: .leading)
