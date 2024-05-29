@@ -1,23 +1,17 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
+struct MainFlightView: View {
   @StateObject var uiModel = UIModel()
   @State private var sheetPresented: Bool = true
   @State private var referenceOpacity: Double = 0
   @State private var camera: MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 33.925129700072, longitude: -98.48033042085098), distance: 8_000_000))
 
-  let locations: [AirportAnnotation] = [
-    AirportAnnotation(code: "DEN", name: "Denver", coordinate: .den),
-    AirportAnnotation(code: "MSY", name: "New Orleans", coordinate: .msy)
-  ]
-
-  let flightRoute: [CLLocationCoordinate2D] = [.den, .mid, .msy]
-
+  let flights: FlightInfo = FlightInfo.getMockedFlights()
   var body: some View {
     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
       Map(position: $camera) {
-        ForEach(locations) { location in
+        ForEach(flights.pointsForFlight) { location in
           Annotation("\(location.name)", coordinate: location.coordinate, anchor: .leading) {
             HStack(spacing: 3) {
               Circle()
@@ -48,9 +42,9 @@ struct ContentView: View {
             .offset(x: -5)
           }
 
-          MapPolyline(coordinates: flightRoute)
+        MapPolyline(coordinates:  flights.pointsForFlight.map { $0.coordinate })
             .stroke(.flightyPathSecondary, lineWidth: 5)
-          MapPolyline(coordinates: flightRoute)
+        MapPolyline(coordinates: flights.pointsForFlight.map { $0.coordinate })
             .stroke(.flightyPathPrimary, lineWidth: 5)
         }
       }
@@ -74,7 +68,7 @@ struct ContentView: View {
       .sheet(isPresented: $sheetPresented) {
         FlightDetails(
           sheetPresented: $sheetPresented,
-          flightInfo: FlightInfo(departure: .den, destination: .msy)
+          flights: flights
         )
           .presentationDetents([.height(200), .medium, .fraction(0.95)], selection: $uiModel.selectedDetent)
           .presentationBackgroundInteraction(
@@ -95,7 +89,7 @@ struct ContentView: View {
 }
 
 #Preview {
-  ContentView()
+  MainFlightView()
 }
 
 // MARK: - ViewOffsetKet

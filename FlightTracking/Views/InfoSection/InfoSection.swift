@@ -81,5 +81,5 @@ struct InfoSection: View {
 }
 
 #Preview {
-  InfoSection(flightInfo: FlightInfo(departure: .den, destination: .msy))
+  InfoSection(flightInfo: FlightInfo.getMockedFlights())
 }

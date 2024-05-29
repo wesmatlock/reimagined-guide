@@ -4,10 +4,10 @@ struct ArrivalForecast: View {
     var body: some View {
       VStack(alignment: .leading, spacing: 7) {
         VStack(alignment: .leading) {
-          Text("Arrival Forecast")
+          Text("Arrival Flight Forecast")
             .font(.title2)
             .fontWeight(.semibold)
-          Text("UA 2534 performance over the last 60 days.")
+          Text("UA 666 performance over the last 60 days.")
             .font(.footnote)
             .fontWeight(.semibold)
             .foregroundStyle(.secondary)

@@ -19,8 +19,8 @@ final class InfoSectionViewModel {
 
   func updateInfo(for flightInfo: FlightInfo) {
     self.flightInfo = flightInfo
-    weatherDataService.fetchWeather(for: flightInfo.destination)
-    checkTimezone(for: flightInfo.destination)
+    weatherDataService.fetchWeather(for: flightInfo.destination.coordinate)
+    checkTimezone(for: flightInfo.destination.coordinate)
   }
 
   func checkTimezone(for destination: CLLocationCoordinate2D) {
@@ -28,8 +28,8 @@ final class InfoSectionViewModel {
 
       if let flightInfo = flightInfo {
         let timezoneOffset = await TimezoneService().getTimeZoneOffsets(
-          departureCoordinate: flightInfo.departure,
-          arrivalCoordinate: flightInfo.destination)
+          departureCoordinate: flightInfo.departure.coordinate,
+          arrivalCoordinate: flightInfo.destination.coordinate)
         print(timezoneOffset)
         if timezoneOffset != 0 {
           timezoneChange = "Timezone Change"

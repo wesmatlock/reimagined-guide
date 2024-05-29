@@ -7,7 +7,7 @@ struct FlightDetails: View {
   
   @Binding var sheetPresented: Bool
 
-  let flightInfo: FlightInfo
+  let flights: FlightInfo
   let minimumOffset: CGFloat = 5
 
   var body: some View {
@@ -18,7 +18,7 @@ struct FlightDetails: View {
           GateDepartureBanner()
           DepartureAndArrivalDetail()
           SeatDetails()
-          InfoSection(flightInfo: flightInfo)
+          InfoSection(flightInfo: flights)
           ArrivalForecast()
 
         } header: {
@@ -95,9 +95,6 @@ struct FlightDetails: View {
 }
 
 #Preview {
-  FlightDetails(
-    sheetPresented: .constant(true),
-    flightInfo: FlightInfo(departure: .den, destination: .msy)
-  )
+  FlightDetails(sheetPresented: .constant(true), flights: FlightInfo.getMockedFlights())
     .environmentObject(UIModel())
 }
