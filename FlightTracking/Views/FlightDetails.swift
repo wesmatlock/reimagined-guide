@@ -16,7 +16,7 @@ struct FlightDetails: View {
         Section {
           ActionsRow()
           GateDepartureBanner()
-          DepartureAndArrivalDetail()
+          DepartureAndArrivalDetail(flights: flights)
           SeatDetails()
           InfoSection(flightInfo: flights)
           ArrivalForecast()
@@ -57,8 +57,8 @@ struct FlightDetails: View {
               .textCase(.uppercase)
               .frame(maxWidth: .infinity, alignment: .leading)
           }
-          Text("Denver to New Orleans")
-            .font(.title2)
+          Text("\(flights.departure.name)\n-TO-\n\(flights.destination.name)")
+            .font(.caption)
             .fontWeight(.semibold)
             .fontDesign(.rounded)
             .frame(maxWidth: .infinity, alignment: .leading)

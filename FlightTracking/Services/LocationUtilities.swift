@@ -18,6 +18,14 @@ struct LocationUtilities {
 
     return CLLocationCoordinate2D(latitude: midLat.radiansToDegrees, longitude: midLon.radiansToDegrees)
   }
+
+  static func distanceBetween(_ coordinate1: CLLocationCoordinate2D, and coordinate2: CLLocationCoordinate2D) -> CLLocationDistance {
+    let location1 = CLLocation(latitude: coordinate1.latitude, longitude: coordinate1.longitude)
+    let location2 = CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude)
+
+    return location1.distance(from: location2)
+  }
+  
 }
 extension Double {
   var degreesToRadians: Double {

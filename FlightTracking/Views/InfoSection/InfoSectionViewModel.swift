@@ -51,9 +51,9 @@ final class InfoSectionViewModel {
         } else {
           let hourString = abs(offset) == 1 ? "hour" : "hours"
           if offset < 0 {
-            timezoneCityInfo = "\(cityName) you will lose \(abs(Int(offset))) \(hourString)."
+            timezoneCityInfo = "Traveling to \(cityName) and you will lose \(abs(Int(offset))) \(hourString)."
           } else {
-            timezoneCityInfo = "\(cityName) you will gain \(Int(offset)) \(hourString)."
+            timezoneCityInfo = "Traveling to \(cityName) and you will gain \(abs(Int(offset))) \(hourString)."
           }
         }
       }

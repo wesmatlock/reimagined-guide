@@ -6,6 +6,8 @@ struct DepartureAndArrivalDetail: View {
   @State private var arrivalPosition: CGFloat = 0
   @State private var sectionHeight: CGFloat = 0
 
+  let flights: FlightInfo
+
   var body: some View {
     HStack(alignment: .top) {
 
@@ -38,7 +40,7 @@ struct DepartureAndArrivalDetail: View {
 
       VStack {
         HStack {
-          Text("DEN")
+          Text(flights.departure.code)
             .font(.title)
             .fontWeight(.bold)
             .overlay(
@@ -66,7 +68,7 @@ struct DepartureAndArrivalDetail: View {
 
         Group {
             HStack {
-              Text("Denver International")
+              Text(flights.departure.name)
                 .fontWeight(.regular)
               Spacer()
               Text("Scheduled")
@@ -101,7 +103,7 @@ struct DepartureAndArrivalDetail: View {
 
         VStack {
           HStack {
-            Text("MSY")
+            Text(flights.destination.code)
               .font(.title)
               .fontWeight(.bold)
               .overlay(
@@ -127,7 +129,7 @@ struct DepartureAndArrivalDetail: View {
           }
           Group {
             HStack {
-              Text("New Orleans International")
+              Text(flights.destination.name)
                 .font(.caption.weight(.regular))
               Spacer()
               Text("Scheduled")
@@ -164,13 +166,11 @@ struct DepartureAndArrivalDetail: View {
     .padding(.leading, 10)
     .padding(.trailing)
     .padding(.bottom, 20)
-
-
   }
 }
 
 #Preview {
-  DepartureAndArrivalDetail()
+  DepartureAndArrivalDetail(flights: FlightInfo.getMockedFlights())
 }
 
 struct TextCenter: PreferenceKey {
