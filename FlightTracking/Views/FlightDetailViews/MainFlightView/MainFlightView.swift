@@ -90,6 +90,15 @@ struct MainFlightView: View {
         .fill(.red)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     )
+    .onAppear {
+      viewModel.updateCameraPosition()
+      camera = viewModel.mapCamera
+    }
+    .onChange(of: viewModel.flights, { oldValue, newValue in
+      viewModel.updateCameraPosition()
+      camera = viewModel.mapCamera
+    })
+
     .environmentObject(uiModel)
   }
 }
