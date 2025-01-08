@@ -1,6 +1,6 @@
-import SwiftUI
 import Observation
+import SwiftUI
 
 class UIModel: ObservableObject {
-  @Published var selectedDetent: PresentationDetent = .height(200)
+    @Published var selectedDetent: PresentationDetent = .height(200)
 }
